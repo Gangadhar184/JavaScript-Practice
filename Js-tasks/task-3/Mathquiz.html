@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //what will be the probability of picking random question out of 5
+
+        let score = 0;
+        const operators = ['+','-','*','/']
+
+        function generateRandomNumber(){
+            return Math.floor(Math.random() * 100) + 1;
+        }
+
+        for(let i = 0; i < 5; i++){
+            let operator = operators[Math.floor(Math.random() * operators.length)];
+            let number1, number2, correctSolution;
+
+            switch(operator) {
+                case '+' : 
+                    number1 = generateRandomNumber();
+                    number2 = generateRandomNumber();
+                    correctSolution = number1 + number2;
+                    break;
+                case '-' :
+                    number1 = generateRandomNumber();
+                    number2 = generateRandomNumber();
+                    correctSolution = number1 - number2;
+                    break;
+                case '*' :
+                    number1 = generateRandomNumber();
+                    number2 = generateRandomNumber();
+                    correctSolution = number1 * number2;
+                    break;
+                case '/':
+                    number1 = generateRandomNumber();
+                    number2 = generateRandomNumber();
+                    correctSolution = number1 / number2;
+                    break;
+            }
+
+
+           let userInput;
+           let userOutput;
+           let isValidInput = false;
+
+           while(!isValidInput){
+
+            userInput = prompt(`Question ${i + 1}: What is ${number1} ${operator} ${number2}?`);
+
+            if(userInput === null || userInput === ""){
+                alert("You must enter a answer. Please try again!!!");
+                continue;
+            }
+            
+            userOutput = parseFloat(userInput);
+
+            if(isNaN(userOutput)){
+                alert("Enter a valid answer");
+                continue;
+            }
+
+            isValidInput = true;
+
+           }
+
+            if(userOutput === correctSolution){
+                score++;
+                // alert('Correct')
+            }
+
+            else{
+                alert(`Incorrect. The correct answer was ${correctSolution}.`);
+            }
+        }
+        alert(`Your score is ${score}`);
+
+    </script>
+
+</body>
+</html>

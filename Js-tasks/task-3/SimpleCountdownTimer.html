@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CountDown Timer</title>
+</head>
+<body>
+    <script>
+        let userInput = prompt("Enter the number of seconds");
+        let countDown = parseInt(userInput);
+        let timer = setInterval(function(){
+            if(countDown > 0){
+                countDown --;
+                // console.log(countDown);
+            }
+            else{
+                clearInterval(timer);
+                alert("Time's up!!");
+                // return;
+            }
+        },1000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Guessing</title>
+</head>
+
+<body>
+    <script>
+        const randomNumber = Math.floor(Math.random() * 100) + 1;
+        let userGuess;
+        let attempts = 0;
+
+        while (attempts < 5) {
+            let userInput = prompt("Guess the number between 1 and 100");
+
+            if(userInput === null || userInput === ""){
+                alert("Please Enter anything!!");
+                break;
+            }
+            
+            userGuess = parseInt(userInput) ;
+
+            if(isNaN(userGuess)){
+                alert("Please enter a valid number");
+                continue;
+            }
+
+            if (userGuess > randomNumber) {
+                alert("Too High");
+            }
+            else if (userGuess < randomNumber) {
+                alert("Too Low");
+            }
+            else {
+                alert("You won");
+                break;
+            }
+
+            attempts++;
+
+            if(attempts < 5){
+                userGuess = parseInt(prompt(`Guess again! You have ${5-attempts} attempts left`));
+            }
+
+        }
+        if(attempts === 5 && userGuess !== randomNumber){
+            alert("GameOver! The correct Number is " + randomNumber);
+        }
+    </script>
+    <!-- 
+     what if i want to the guess is nearer or farther??
+     what can i do?
+
+     My idea
+
+     Keep the track of lastGuess and calculate the difference between previousGuess and randomnumber
+     curDiff = (randnum-userguess), prevdiff = (rannum - prevgues)
+     if current diff is < prevdidff -> you are closer
+     else if currediff > prevDiff -> you are getting farther
+     else it is same as before
+     we should also update the previous guess = userGuess and increase the attempts
+      -->
+</body>
+
+</html>

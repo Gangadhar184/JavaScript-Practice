@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        let diaryEntries = [];
+
+        function showEntries(){
+            if(diaryEntries.length === 0){
+                alert("no entries yet");
+            } 
+            else {
+                
+                let userEntries = "Diary Entries: \n";
+                for(let i = 0; i < diaryEntries.length; i++){
+                    userEntries += `${i+1}: ${diaryEntries[i]} \n`;
+                }
+                alert(userEntries);
+            }
+        }
+
+        let userChoice;
+
+        while(true){
+            userChoice = prompt("What would you like to do? add , view, exit");
+
+            if(userChoice.toLowerCase() === 'add'){
+                let newEntry = prompt("enter your diary entry");
+                if(newEntry){
+                    diaryEntries.push(newEntry);
+                    alert("entry has added");
+                }
+                else {
+                    alert("No entry added");
+                }
+            }
+            else if(userChoice.toLowerCase() === 'view') {
+                showEntries();
+            }
+            else if(userChoice.toLowerCase() === 'exit'){
+                alert("goodbye");
+                break;
+            }
+            else{
+                alert("Invalid option. enter only add, view or exit")
+            }
+        }
+    </script>
+</body>
+</html>

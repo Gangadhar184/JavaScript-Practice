@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SimpleCalculator</title>
+</head>
+<body>
+    <script>
+        let number1 = parseFloat(prompt("Enter the Number"));
+        let operator = prompt("Enter the operator (+, -, *, /): ")
+        let number2 = parseFloat(prompt("Enter the Number"));
+
+        let result;
+
+        switch (operator) {
+        case '+':
+            result = number1 + number2;
+            break;
+        case '-':
+            result = number1 - number2;
+            break;
+        case '*':
+            result = number1 * number2;
+            break;
+        case '/':
+            if (number2 === 0) {
+                alert("Error: Division by zero is not allowed.");
+                break;
+            } else {
+                result = number1 / number2;
+            }
+            break;
+        default:
+            alert("Invalid operator! Please enter one of the following: +, -, *, /");
+            break;
+    }
+    alert(`The result of ${number1} ${operator} ${number2} is : ${result}`);
+        
+    </script>
+</body>
+</html>

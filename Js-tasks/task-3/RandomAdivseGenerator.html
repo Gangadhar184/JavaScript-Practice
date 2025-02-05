@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let adviceList = [
+            "Never Give Up",
+            "Hardwork beats talent",
+            "Go to Gym and Workout daily",
+            "Stay Hydrated",
+            "Learn Something new Every Day",
+            "Prioritize your mental health",
+            "Ask for help when you need it",
+            "Think Objectively",
+            "Consistency is the Key to Success",
+            "Do WhatEver You Enjoys the most"
+        ];
+
+        function generateRandomAdvice(){
+            const randomAdivePick = Math.floor(Math.random() * adviceList.length);
+            alert(adviceList[randomAdivePick]);
+
+            const wantMore = confirm("Would you like more piece of advice?");
+            if(wantMore){
+                generateRandomAdvice();
+            }
+        }
+        generateRandomAdvice();
+    </script>
+</body>
+</html>
