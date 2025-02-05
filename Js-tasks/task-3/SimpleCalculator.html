@@ -13,6 +13,10 @@
 
         let result;
 
+        if(isNaN(number1) || isNaN(number2)){
+            alert("Enter the valid Number");
+        }
+
         switch (operator) {
         case '+':
             result = number1 + number2;
@@ -35,7 +39,10 @@
             alert("Invalid operator! Please enter one of the following: +, -, *, /");
             break;
     }
-    alert(`The result of ${number1} ${operator} ${number2} is : ${result}`);
+    if(result !== undefined){
+        alert(`The result of ${number1} ${operator} ${number2} is : ${result}`);
+    }
+   
         
     </script>
 </body>
