@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping chart</title>
+</head>
+<body>
+    <script>
+        let productList = [];
+
+        function addProducts(){
+            let products = prompt("Enter the products");
+            if(products) {
+                productList = products.split(',').map((product)=>product.trim());
+                // displayCart();
+            }
+            else {
+                alert("no products entered");
+            }
+           
+        }
+
+        function displayCart(){
+            if(productList.length === 0) {
+                alert('Cart is empty');
+            } 
+            else {
+                let cartDetails = "Your cart contains: \n";
+                for (let i = 0; i < productList.length; i++) {
+                    cartDetails += `${i+1} : ${productList[i]}`;
+                }
+                alert(cartDetails);
+            }
+
+        }
+
+        function applyDiscount(discount) {
+            return this.map(product => `${product} - Discounted by ${discount}%`);
+        }
+
+        function applyDiscountToCart() {
+            let discount = parseFloat(prompt("Enter discount percentage: "));
+            if(isNaN(discount)) {
+                alert("invalid discount")   ;
+                return;
+            }
+
+            let discountedProducts = applyDiscount.apply(productList, [discount])   ;
+            alert("Discount applied to the following products : \n" + discountedProducts.join("\n"));
+
+        }
+
+        function startShopping() {
+            let userAction = prompt("choose action \n1. Add products \n2. Display cart\n3. Apply discount \n4. Exit");
+
+            while (userAction !== "4"){
+                switch(userAction) {
+                    case "1" : 
+                        addProducts();
+                        break;
+                    case "2" :
+                        displayCart().call(productList);
+                        break;
+                    case "3" :
+                        applyDiscountToCart();
+                        break;
+                    default :
+                        alert("invalid choice. Try again");
+                }
+                userAction = prompt("Choose an action: \n1. Add products\n2. Display cart\n3. Apply discount\n4. Exit");
+            }
+            
+            alert("Thank you for shopping");
+        }
+        startShopping();
+    </script>
+</body>
+</html>

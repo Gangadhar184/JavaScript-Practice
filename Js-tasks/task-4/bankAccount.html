@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bank Account </title>
+</head>
+<body>
+    <script>
+        const account1 = {
+            accountNumber : "1234",
+            balance : 1000
+        };
+        const account2 = {
+            accountNumber : "42342",
+            balance : 1000,
+        }
+
+        function deposit(amount) {
+            if (amount > 0) {
+                this.balance += amount;
+                alert(`Deposited $ ${amount}. New balance : $ ${this.balance}`);
+            }
+            else {
+                alert("Invalid deposit amount!");
+            }
+        }
+
+        function withdraw(amount) {
+            if (amount > 0 && amount <= this.balance) {
+                this.balance -= amount;
+                alert(`Withdraw $ ${amount}. New balance : $ ${this.balance}`);
+            }
+            else {
+                alert("Invalid withdrawl amount");
+            }
+        }
+
+        function checkBalance() {
+            alert(`Account ${this.accountNumber} balance : $ ${this.balance}`);
+        }
+
+        const depositAccount1 = deposit.bind(account1);
+        const withdrawAccount1 = withdraw.bind(account1);
+        const checkBalanceAccount1 = checkBalance.bind(account1);
+
+        const depositAccount2 = deposit.bind(account2);
+        const withdrawAccount2 = withdraw.bind(account2);
+        const checkBalanceAccount2 = checkBalance.bind(account2);
+
+        function startBank() {
+            let accountChoice = prompt("Choose account:\n1. Account 1234 \n2. Account 42342");
+
+            let account;
+
+            if (accountChoice === "1") {
+                account = account1 ;
+            }
+            else if(accountChoice === "2") {
+                account = account2;
+            }
+            else {
+                alert ("invalid account");
+                return;
+            }
+            
+        }
+
+    </script>
+</body>
+</html>

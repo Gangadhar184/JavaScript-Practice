@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager</title>
+  </head>
+  <body>
+    <script>
+      let userTasks = [];
+
+      function showEntries() {
+        if (userTasks.length === 0) {
+          alert("No entries yet");
+        } else {
+          let userTasks = "what do you want Enter Task or view or delete\n";
+          for (let i = 0; i < userTasks.length; i++) {
+            userTasks += `${i + 1} : ${userTasks[i]} \n`;
+          }
+          alert(userTasks);
+        }
+      }
+      let userChoice;
+
+      while (true) {
+        userChoice = prompt("Enter your tasks");
+        if (userChoice.toLowerCase() === "add") {
+          let newEntry = prompt("enter your tasks");
+          if (newEntry) {
+            userTasks.push(newEntry);
+            alert("Entry has added");
+          } else {
+            alert("not entry added");
+          }
+        } else if (userChoice.toLowerCase() === "view") {
+          showEntries();
+        } else if (userChoice.toLowerCase() === "delete") {
+          let taskNumber = prompt("enter the task number you want to delete");
+          if (taskNumber && taskNumber <= userTasks.length && taskNumber > 0) {
+            userTasks.splice(taskNumber - 1, 1);
+            alert(`Task ${taskNumber} has been deleted`);
+          } else {
+            alert("invalid tasknumber");
+          }
+        } else if (userChoice.toLowerCase() === "exit") {
+          break;
+        } else {
+          alert("invalid option, please try again");
+        }
+      }
+    </script>
+  </body>
+</html>
