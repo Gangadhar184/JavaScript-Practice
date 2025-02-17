@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="registrationForm">
+        <label for="fullname">Full Name</label>
+        <input id="fn" type="text" placeholder="What is your name?" required><br>
+
+        <label for="emailid">Email ID</label>
+        <input id="email" type="email" placeholder="Tell us your Email ID" required><br>
+
+        <label for="password">Password</label>
+        <input id="password" type="password" placeholder="Minimum 6 characters" required><br>
+
+        <label for="mobileNumber">Mobile number</label> 
+        <input id="number" type="number" placeholder="Enter your mobile number" required><br>
+
+        <input id="consent" type="checkbox" required> Lorem ipsum dolor sit amet consectetur. <br>
+
+        <button id="registerationForm" type="submit">Register now</button>
+    </form>
+
+    <script>
+    
+        document.getElementById("registrationForm").addEventListener("submit", (e)=> {
+            e.preventDefault();
+            const fn = document.getElementById("fn").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const number = document.getElementById("number").value;
+            const consent = document.getElementById("consent").checked;
+
+            if (password.length < 6) {
+                alert("Password must be at least 6 characters long.");
+                return; 
+            }
+
+            if (number.length !== 10) {
+                alert("Mobile number must be exactly 10 digits.");
+                return; 
+            }
+
+            if (!consent) {
+                alert("You must agree to the terms and conditions.");
+                return; 
+            }
+            console.log("Full Name: " + fn);
+            console.log("Email: " + email);
+            console.log("Password: " + password);
+            console.log("Mobile Number: " + number);
+            console.log("Consent: " + consent);
+
+            
+        });
+    </script>
+</body>
+</html>

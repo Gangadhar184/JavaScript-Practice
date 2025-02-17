@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .card-section {
+        display: flex;
+      }
+      .card {
+        margin: 10px;
+        border: 1px solid #ccc;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        padding: 4px;
+      }
+      .toy1 {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <input id="inputBox" type="number">
+    <button id="searchBtn">Buy</button>
+    
+
+    <script>
+      const searchBtn = document.getElementById("searchBtn");
+      const inputBox = document.getElementById("inputBox");
+
+      searchBtn.addEventListener("click", () => {
+        // const sectionElement = document.createElement("section");
+        // sectionElement.classList.add("card-section");
+
+        // const divElement = document.createElement("div");
+        // divElement.classList.add("card");
+        // const imgElement = document.createElement("img");
+        // imgElement.setAttribute("src", "https://m.media-amazon.com/images/I/71YHghl3nHL._AC_SY200_.jpg");
+        // imgElement.setAttribute("alt", "puzzle-toy");
+        // const paraElement = document.createElement("p");
+        // paraElement.classList.add("toy1");
+        // paraElement.innerText = "puzzle Berry";
+
+        // divElement.appendChild(imgElement);
+        // divElement.appendChild(paraElement);
+        // sectionElement.appendChild(divElement);
+        // document.body.appendChild(sectionElement);
+
+        // const divElement2 = document.createElement("div");
+        // divElement2.classList.add("card");
+        // const imgElement2 = document.createElement("img");
+        // imgElement2.setAttribute("src", "https://m.media-amazon.com/images/I/612F8Cg4vQL._AC_SY200_.jpg");
+        // imgElement2.setAttribute("alt", "teddy");
+        // const paraElement2 = document.createElement("p");
+        // paraElement2.classList.add("toy1");
+        // paraElement2.innerText = "Teddy Bear";
+
+        // divElement2.appendChild(imgElement2);
+        // divElement2.appendChild(paraElement2);
+        // sectionElement.appendChild(divElement2);
+        // document.body.appendChild(sectionElement);
+
+        // const divElement3 = document.createElement("div");
+        // divElement3.classList.add("card");
+        // const imgElement3 = document.createElement("img");
+        // imgElement3.setAttribute("src", "https://m.media-amazon.com/images/I/717pTcRrigL._AC_SY200_.jpg");
+        // imgElement3.setAttribute("alt", "car-toy");
+        // const paraElement3 = document.createElement("p");
+        // paraElement3.classList.add("toy1");
+        // paraElement3.innerText = "Jeep";
+
+        // divElement3.appendChild(imgElement3);
+        // divElement3.appendChild(paraElement3);
+        // sectionElement.appendChild(divElement3);
+        // document.body.appendChild(sectionElement);
+
+        const sectionElement = document.createElement("section");
+        sectionElement.classList.add("card-section");
+
+        const createCard = (imgSrc, imgAlt, text) => {
+          const divElement = document.createElement("div");
+          divElement.classList.add("card");
+
+          const imgElement = document.createElement("img");
+          imgElement.setAttribute("src", imgSrc);
+          imgElement.setAttribute("alt", imgAlt);
+
+          const paraElement = document.createElement("p");
+          paraElement.classList.add("toy1");
+          paraElement.innerText = text;
+
+          divElement.appendChild(imgElement);
+          divElement.appendChild(paraElement);
+
+          return divElement;
+        };
+        sectionElement.appendChild(
+          createCard(
+            "https://m.media-amazon.com/images/I/71YHghl3nHL._AC_SY200_.jpg",
+            "puzzle-toy",
+            "Puzzle Berry"
+          )
+        );
+        sectionElement.appendChild(
+          createCard(
+            "https://m.media-amazon.com/images/I/612F8Cg4vQL._AC_SY200_.jpg",
+            "teddy",
+            "Teddy Bear"
+          )
+        );
+        sectionElement.appendChild(
+          createCard(
+            "https://m.media-amazon.com/images/I/717pTcRrigL._AC_SY200_.jpg",
+            "car-toy",
+            "Jeep"
+          )
+        );
+        // const cardsToDisplay = [
+        //   {
+
+        //   }
+        // ]
+
+        document.body.appendChild(sectionElement);
+        inputBox.value = "";
+      });
+    </script>
+  </body>
+</html>
