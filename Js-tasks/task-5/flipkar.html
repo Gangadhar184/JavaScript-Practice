@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .liked path {
+        fill: red;
+      }
+      .card {
+        display: flex;
+        justify-content: space-evenly;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 1220px;
+        margin: auto;
+      }
+      .phone-img {
+        width: 150px;
+      }
+      .left-side {
+        display: flex;
+        align-items: center;
+      }
+      .like {
+        margin-left: 10px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      const likedPhones = [];
+
+      const sectionElemet = document.createElement("section");
+      sectionElemet.classList.add("card-section");
+
+      const createCard = (
+        imgSrc,
+        imgAlt,
+        heartSVG,
+        phoneName,
+        rating,
+        noOfRatings,
+        reviews,
+        phoneSpecsList
+      ) => {
+        const divElement = document.createElement("div");
+        divElement.classList.add("card");
+
+        //leftside div for img
+        const imgDivElement = document.createElement("div");
+        imgDivElement.classList.add("left-side");
+        //imgtaga
+        const imgElement = document.createElement("img");
+        imgElement.classList.add("phone-img");
+        imgElement.setAttribute("src", imgSrc);
+        imgElement.setAttribute("alt", imgAlt);
+        //like symbol, when i click on that it should turn it red (hearSVG) or anyother symbol like that
+        const likeElement = document.createElement("div");
+        likeElement.classList.add("like");
+        likeElement.innerHTML = heartSVG;
+
+        imgDivElement.appendChild(imgElement);
+        imgDivElement.appendChild(likeElement);
+
+        //right side part
+        const rightSideDiv = document.createElement("div");
+        rightSideDiv.classList.add("right-part");
+
+        //phoneName
+        const h4Element = document.createElement("h4");
+        h4Element.classList.add("phoneName");
+        h4Element.textContent = phoneName;
+
+        //ratingPhone span
+        const ratingElement = document.createElement("span");
+        ratingElement.classList.add("rating");
+        ratingElement.textContent = ` ${rating} ★`;
+
+        //no.ofRating span
+        const ratingElementNumber = document.createElement("span");
+        ratingElement.classList.add("ratingNumber");
+        ratingElementNumber.textContent = ` ${noOfRatings} Ratings & `;
+
+        //review span
+        const reviewElement = document.createElement("span");
+        reviewElement.classList.add("span");
+        reviewElement.textContent = `${reviews} Reviews`;
+
+        //specs ul li element
+        const specListElement = document.createElement("ul");
+        specListElement.classList.add("specs-list");
+
+        phoneSpecsList.forEach((spec) => {
+          const liElement = document.createElement("li");
+          liElement.textContent = spec;
+          specListElement.appendChild(liElement);
+        });
+        rightSideDiv.appendChild(h4Element);
+        rightSideDiv.appendChild(ratingElement);
+        rightSideDiv.appendChild(ratingElementNumber);
+        rightSideDiv.appendChild(reviewElement);
+        rightSideDiv.appendChild(specListElement);
+
+        //apend imgDivElem and rightside spec to main div
+        divElement.appendChild(imgDivElement);
+        divElement.appendChild(rightSideDiv);
+
+        sectionElemet.appendChild(divElement);
+
+        //object to store details
+        const phoneDetails = {
+          imgSrc,
+          imgAlt,
+          phoneName,
+          rating,
+          noOfRatings,
+          reviews,
+          phoneSpecsList,
+        };
+
+        //if it is liked it will be added to array, else if it is unliked, it will find the index and remove it
+        likeElement.addEventListener("click", () => {
+          likeElement.classList.toggle("liked");
+          if (likeElement.classList.contains("liked")) {
+            likedPhones.push(phoneDetails);
+          } else {
+            const index = likedPhones.findIndex(
+              (phone) => phone.phoneName === phoneDetails.phoneName
+            );
+            if (index !== -1) {
+              likedPhones.splice(index, 1); //remove the item from array
+            }
+          }
+          console.log(likedPhones);
+        });
+      };
+
+      const heartSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`;
+      createCard(
+        "https://rukminim2.flixcart.com/image/832/832/xif0q/mobile/k/8/b/-original-imah9cbfu7g6wzx3.jpeg?q=70&crop=false",
+        "phoneImg",
+        heartSVG,
+        "Samsung Galaxy F06 5G",
+        4.5,
+        100,
+        1455,
+        [
+          "4 GB RAM | 128 GB ROM | Expandable Upto 1500 GB",
+          "17.02 cm (6.7 inch) HD+ Display",
+          "50MP + 2MP | 8MP Front Camera",
+          "5000 mAh Battery",
+          "Dimensity 6300 Processor",
+        ]
+      );
+      createCard(
+        "https://rukminim2.flixcart.com/image/832/832/xif0q/mobile/k/8/b/-original-imah9cbfu7g6wzx3.jpeg?q=70&crop=false",
+        "phoneImg",
+        heartSVG,
+        "Samsung Galaxy F06 5G",
+        4.5,
+        100,
+        1455,
+        [
+          "4 GB RAM | 128 GB ROM | Expandable Upto 1500 GB",
+          "17.02 cm (6.7 inch) HD+ Display",
+          "50MP + 2MP | 8MP Front Camera",
+          "5000 mAh Battery",
+          "Dimensity 6300 Processor",
+        ]
+      );
+      createCard(
+        "https://rukminim2.flixcart.com/image/832/832/xif0q/mobile/k/8/b/-original-imah9cbfu7g6wzx3.jpeg?q=70&crop=false",
+        "phoneImg",
+        heartSVG,
+        "Samsung Galaxy F06 5G",
+        4.5,
+        100,
+        1455,
+        [
+          "4 GB RAM | 128 GB ROM | Expandable Upto 1500 GB",
+          "17.02 cm (6.7 inch) HD+ Display",
+          "50MP + 2MP | 8MP Front Camera",
+          "5000 mAh Battery",
+          "Dimensity 6300 Processor",
+        ]
+      );
+      createCard(
+        "https://rukminim2.flixcart.com/image/832/832/xif0q/mobile/k/8/b/-original-imah9cbfu7g6wzx3.jpeg?q=70&crop=false",
+        "phoneImg",
+        heartSVG,
+        "Samsung Galaxy F06 5G",
+        4.5,
+        100,
+        1455,
+        [
+          "4 GB RAM | 128 GB ROM | Expandable Upto 1500 GB",
+          "17.02 cm (6.7 inch) HD+ Display",
+          "50MP + 2MP | 8MP Front Camera",
+          "5000 mAh Battery",
+          "Dimensity 6300 Processor",
+        ]
+      );
+      document.body.appendChild(sectionElemet);
+    </script>
+  </body>
+</html>
